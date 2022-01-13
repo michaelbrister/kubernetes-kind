@@ -64,9 +64,10 @@ helm install dashboard kubernetes-dashboard/kubernetes-dashboard -f dashboard-va
 ```
 
 ### Access the kubernetes dashboard
+Set your hosts file to the domain specified above to point to your laptop's IP.
 You should now be able to access the dashboard by going to the host you configure in the previous step
 ```
-http://x.x.x.x/dashboard
+kubernetes-dashboard.domain.com
 ```
 
 At this point you should have a fully working bubernetes cluster using kind.
