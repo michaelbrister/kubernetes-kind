@@ -34,7 +34,7 @@ ingress:
 ```
 ### Apply the updated gitea-values.yaml file
 ```
-helm upgrade -f values.yaml gitea -n gitea gitea-charts/gitea
+helm upgrade -n gitea gitea gitea-charts/gitea -f gitea-values.yaml
 ```
 
 ### Check if gitea is running
