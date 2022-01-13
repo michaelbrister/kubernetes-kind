@@ -3,14 +3,17 @@ kind is a tool for running local Kubernetes clusters using Docker container “n
 kind was primarily designed for testing Kubernetes itself, but may be used for local development or CI
 
 ## Install kind using go modules
+```
 go install sigs.k8s.io/kind@v0.11.1
-
+```
 ## Create a simple kubernetes cluster
+```
 kind create cluster
-
+```
 ## Delete kubernetes cluster
+```
 kind delete cluster
-
+```
 ## Create your kubernetes cluster with ingress
 Create a kind cluster with extraPortMappings and node-labels.
 
