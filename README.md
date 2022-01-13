@@ -2,16 +2,16 @@
 kind is a tool for running local Kubernetes clusters using Docker container “nodes”.
 kind was primarily designed for testing Kubernetes itself, but may be used for local development or CI
 
-### Install kind using go modules
+## Install kind using go modules
 go install sigs.k8s.io/kind@v0.11.1
 
-### Create a simple kubernetes cluster
+## Create a simple kubernetes cluster
 kind create cluster
 
-### Delete kubernetes cluster
+## Delete kubernetes cluster
 kind delete cluster
 
-### Create your kubernetes cluster with ingress
+## Create your kubernetes cluster with ingress
 Create a kind cluster with extraPortMappings and node-labels.
 
 extraPortMappings allow the local host to make requests to the Ingress controller over ports 80/443
@@ -38,18 +38,18 @@ nodes:
 EOF
 ```
 
-### Create nginx ingress
+## Create nginx ingress
 ```
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 ```
 
-### Install kubernetes dashboard
+## Install kubernetes dashboard
 Add kubernetes-dashboard repository
 ```
 helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
 ```
 
-### Export the kubernetes-dashboard helm values so we can update them.
+## Export the kubernetes-dashboard helm values so we can update them.
 ```
 helm show values kubernetes-dashboard/kubernetes-dashboard > dashboard-values.yaml
 ```
@@ -69,12 +69,12 @@ Deploy a Helm Release named "dashboard" using the kubernetes-dashboard chart
 helm install dashboard kubernetes-dashboard/kubernetes-dashboard -f dashboard-values.yaml
 ```
 
-### Get kubernetes dashboard secure token
+## Get kubernetes dashboard secure token
 ```
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | awk '/^deployment-controller-token-/{print $1}') | awk '$1=="token:"{print $2}'
 ```
 
-### Access the kubernetes dashboard
+## Access the kubernetes dashboard
 Set your hosts file to the domain specified above to point to your laptop's IP.
 You should now be able to access the dashboard by going to the host you configure in the previous step
 ```
