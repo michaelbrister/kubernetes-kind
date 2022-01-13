@@ -63,11 +63,16 @@ Deploy a Helm Release named "dashboard" using the kubernetes-dashboard chart
 helm install dashboard kubernetes-dashboard/kubernetes-dashboard -f dashboard-values.yaml
 ```
 
+### Get kubernetes dashboard secure token
+```
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | awk '/^deployment-controller-token-/{print $1}') | awk '$1=="token:"{print $2}'
+```
+
 ### Access the kubernetes dashboard
 Set your hosts file to the domain specified above to point to your laptop's IP.
 You should now be able to access the dashboard by going to the host you configure in the previous step
 ```
-kubernetes-dashboard.domain.com
+https://kubernetes-dashboard.domain.com
 ```
 
 At this point you should have a fully working bubernetes cluster using kind.
