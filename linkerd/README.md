@@ -2,7 +2,7 @@
 Many of these steps were taken directly from the official linkerd getting started guide
 https://linkerd.io/2.10/getting-started/#step-2-validate-your-kubernetes-cluster
 
-### Install the Linkerd CLI on your local machine
+## Install the Linkerd CLI on your local machine
 ```
 curl -sL https://run.linkerd.io/install | sh
 ```
@@ -30,9 +30,9 @@ Next, we’ll install some extensions. Extensions add non-critical but often use
 ```
 linkerd viz install | kubectl apply -f - # on-cluster metrics stack
 ```
+## optional
 Optionally, at this point you can install other extensions. For example:
 ```
-## optional
 linkerd jaeger install | kubectl apply -f - # Jaeger collector and UI
 ```
 
