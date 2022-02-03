@@ -90,7 +90,7 @@ kubectl apply -f ingress-linkerd.yaml
 
 Meshing a Kubernetes resource is typically done by annotating the resource, or its namespace, with the linkerd.io/inject: enabled Kubernetes annotation. This annotation triggers automatic proxy injection when the resources are created or updated.
 
-Add the linkerd.io/inject annotation
+Add the linkerd.io/inject annotation to a namespace. Relaunching the pods in the namespace will get the linkerd sidecar attached.
 ```
 kubectl annotate namespaces <namespace> linkerd.io/inject=enabled
 ```
