@@ -10,7 +10,6 @@ kubectl create namespace gitea
 Next we will be adding the helm charts
 ```
 helm repo add gitea-charts https://dl.gitea.io/charts/
-helm install gitea -n gitea gitea-charts/gitea
 ```
 ### Export the gitea helm values so we can update them.
 ```
@@ -34,7 +33,7 @@ ingress:
 ```
 ### Apply the updated gitea-values.yaml file
 ```
-helm upgrade -n gitea gitea gitea-charts/gitea -f gitea-values.yaml
+helm install -n gitea gitea gitea-charts/gitea -f gitea-values.yaml
 ```
 
 ### Check if gitea is running
