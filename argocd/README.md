@@ -3,6 +3,11 @@
 Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.
 To get Argo-CD deployed on our Kubernetes cluster we will be utilizing the official helm chart
 
+## Create the namespace where we will be installing argo-cd
+```
+kubectl create namespace argocd
+```
+
 ## Add helm chart to helm repo
 ```
 helm repo add argo https://argoproj.github.io/argo-helm
