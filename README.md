@@ -10,6 +10,13 @@ go install sigs.k8s.io/kind@v0.11.1
 ```
 kind create cluster
 ```
+
+## Create cluster using differenet image.
+Using a different image allows you to change the Kubernetes version of the created cluster.
+https://hub.docker.com/r/kindest/node/tags
+```
+kind create cluster --image=kindest/node:v1.23.4
+```
 ## Delete kubernetes cluster
 ```
 kind delete cluster
