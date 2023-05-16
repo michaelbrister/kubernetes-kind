@@ -16,6 +16,11 @@ helm repo add gitea-charts https://dl.gitea.io/charts/
 helm show values gitea-charts/gitea > gitea-values.yaml
 ```
 
+### Create a generic nginx ingress
+```
+kubectl apply --filename https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/kind/deploy.yaml
+```
+
 ### Edit gitea chart values file
 Edit the gitea-values.yaml file to turn on ingress ( example ingress section shown below )
 ```
@@ -47,33 +52,6 @@ Let's create an ingress controller so that we can access it.
 First we need to get the name of the service we're adding to the ingress controller
 ```
 kubectl get svc -n gitea
-```
-
-Create an ingress-gitea.yaml file 
-```
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: gitea 
-  namespace: gitea 
-  annotations:
-    # use the shared ingress-nginx
-    kubernetes.io/ingress.class: nginx
-spec:
-  # https://kubernetes.io/docs/concepts/services-networking/ingress/
-  # https://kubernetes.github.io/ingress-nginx/user-guide/tls/
-  rules:
-  - host: git.domain.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: gitea-http
-            port:
-              number: 80
 ```
 
 Apply the ingress-gitea.yaml file
